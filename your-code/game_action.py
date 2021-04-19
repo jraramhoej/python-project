@@ -28,7 +28,7 @@ def play_room(room):
         print("Congrats! You escaped the room!")
     else:
         print("You are now in " + room["name"])
-        intended_action = input("What would you like to do? Type 'explore' or type 'go to' and the name of an item in the room.").lower().strip()
+        intended_action = input("What would you like to do? Type 'explore' or type 'go to' and the name of an item in the room.\n\nType here: ").lower().strip()
         if intended_action == "explore":
             explore_room(room)
             play_room(room)
@@ -97,7 +97,7 @@ def examine_item(item_name):
     if(output is None):
         print("The item you requested is not found in the current room.")
     
-    if(next_room and input("Do you want to go to the next room? Enter 'yes' or 'no'").lower().strip() == 'yes'):
+    if(next_room and input("Do you want to go to the next room? Enter 'yes' or 'no'\n\nType here: ").lower().strip() == 'yes'):
         play_room(next_room)
     else:
         play_room(current_room)
