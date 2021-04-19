@@ -1,5 +1,6 @@
 import objects_and_rooms
-from objects_and_rooms import object_relations, all_items
+from objects_and_rooms import object_relations, all_items, all_riddles
+import random
 
 # Load initial game state
 game_state = objects_and_rooms.INIT_GAME_STATE.copy()
@@ -80,18 +81,23 @@ def examine_item(item_name):
                     if(key["target"] == item):
                         have_key = True
                 if(have_key):
-                    output += "You unlock it with a key you have."
+                    print(output + "You unlock it with a key you have.")
                     next_room = get_next_room_of_door(item, current_room)
                 else:
-                    output += "It is locked but you don't have the key."
+                    print(output + "It is locked but you don't have the key.")
             else:
                 if(item["name"] in object_relations and len(object_relations[item["name"]])>0):
-                    item_found = object_relations[item["name"]].pop()
-                    game_state["keys_collected"].append(item_found)
-                    output += "You find " + item_found["name"] + "."
+                    riddle = random.choice(all_riddles)
+                    print(output + "There is an old wise man there. The wise man loves riddles and, in order to get the key belonging to the " + item["name"] + ", you need to answer correctly. Otherwise you will not be able to escape. The riddle is the following: \n\n" + riddle["question"])
+                    question = input("\n\nType here: ").lower().strip()
+                    if question == riddle["answer"]:
+                        item_found = object_relations[item["name"]].pop()
+                        game_state["keys_collected"].append(item_found)
+                        print("Congratulations! The wise man gives you the " + item_found["name"] + ".")
+                    else:
+                        print("That is not the correct answer.")
                 else:
-                    output += "There isn't anything interesting about it."
-            print(output)
+                    print(output + "There isn't anything interesting about it.")
             break
 
     if(output is None):

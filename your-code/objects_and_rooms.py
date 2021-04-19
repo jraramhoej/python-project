@@ -103,6 +103,27 @@ outside = {
   "name": "outside"
 }
 
+# define riddles
+riddle_1 = {
+    "question": "What has a face and two hands, but has no arms or legs?",
+    "answer": "a clock"
+}
+
+riddle_2 = {
+    "question": "What has to be broken before you can use it?",
+    "answer": "an egg"
+}
+
+riddle_3 = {
+    "question": "What begins with T, ends with T, and has T in it?",
+    "answer": "a teapot"
+}
+
+riddle_4 = {
+    "question": "What has a neck but has no head?",
+    "answer": "a bottle"
+}
+
 # define list of all rooms
 all_rooms = [game_room, bedroom_1, bedroom_2, living_room, outside]
 
@@ -111,6 +132,9 @@ all_doors = [door_a, door_b, door_c, door_d]
 
 # define all items
 all_items = [couch, piano, queen_bed, double_bed, dresser, dining_table, door_a, door_b, door_c, door_d]
+
+# define all riddles
+all_riddles = [riddle_1, riddle_2, riddle_3, riddle_4]
 
 # define which items/rooms are related
 object_relations = {
