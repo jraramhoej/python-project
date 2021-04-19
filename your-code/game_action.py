@@ -1,5 +1,5 @@
 import objects_and_rooms
-from objects_and_rooms import object_relations
+from objects_and_rooms import object_relations, all_items
 
 # Load initial game state
 game_state = objects_and_rooms.INIT_GAME_STATE.copy()
@@ -28,14 +28,14 @@ def play_room(room):
         print("Congrats! You escaped the room!")
     else:
         print("You are now in " + room["name"])
-        intended_action = input("What would you like to do? Type 'explore' or 'examine'?").lower().strip()
+        intended_action = input("What would you like to do? Type 'explore' or type 'go to' and the name of an item in the room.").lower().strip()
         if intended_action == "explore":
             explore_room(room)
             play_room(room)
-        elif intended_action == "examine":
-            examine_item(input("What would you like to examine?").lower().strip())
+        elif intended_action in [("go to " + item["name"]) for item in all_items]:
+            examine_item(intended_action)
         else:
-            print("Not sure what you mean. Type 'explore' or 'examine'.")
+            print("Not sure what you mean. Type 'explore' or 'go to' and the name of an item in the room.")
             play_room(room)
         linebreak()
 
@@ -72,8 +72,8 @@ def examine_item(item_name):
     output = None
     
     for item in object_relations[current_room["name"]]:
-        if(item["name"] == item_name):
-            output = "You examine " + item_name + ". "
+        if(("go to " + item["name"]) == item_name):
+            output = "You arrive at " + item["name"] + ". "
             if(item["type"] == "door"):
                 have_key = False
                 for key in game_state["keys_collected"]:

@@ -109,6 +109,9 @@ all_rooms = [game_room, bedroom_1, bedroom_2, living_room, outside]
 # define all doors
 all_doors = [door_a, door_b, door_c, door_d]
 
+# define all items
+all_items = [couch, piano, queen_bed, double_bed, dresser, dining_table, door_a, door_b, door_c, door_d]
+
 # define which items/rooms are related
 object_relations = {
 
