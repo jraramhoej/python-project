@@ -1,6 +1,7 @@
 import objects_and_rooms
 from objects_and_rooms import object_relations, all_items, all_riddles
 import random
+from termcolor import colored
 
 # Load initial game state
 game_state = objects_and_rooms.INIT_GAME_STATE.copy()
@@ -93,9 +94,9 @@ def examine_item(item_name):
                     if question == riddle["answer"]:
                         item_found = object_relations[item["name"]].pop()
                         game_state["keys_collected"].append(item_found)
-                        print("Congratulations! The wise man gives you the " + item_found["name"] + ".")
+                        print(colored("Congratulations! The wise man gives you the " + item_found["name"] + ".", 'green'))
                     else:
-                        print("That is not the correct answer.")
+                        print(colored("That is not the correct answer.", 'red'))
                 else:
                     print(output + "There isn't anything interesting about it.")
             break
