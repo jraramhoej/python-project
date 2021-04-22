@@ -106,22 +106,22 @@ outside = {
 # define riddles
 riddle_1 = {
     "question": "What has a face and two hands, but has no arms or legs?",
-    "answer": "a clock"
+    "answer": {"a clock", "clock"}
 }
 
 riddle_2 = {
     "question": "What has to be broken before you can use it?",
-    "answer": "an egg"
+    "answer": {"an egg", "egg", "a egg"}
 }
 
 riddle_3 = {
     "question": "What begins with T, ends with T, and has T in it?",
-    "answer": "a teapot"
+    "answer": {"a teapot", "teapot"}
 }
 
 riddle_4 = {
     "question": "What has a neck but has no head?",
-    "answer": "a bottle"
+    "answer": {"a bottle", "bottle"}
 }
 
 # define list of all rooms

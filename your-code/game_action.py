@@ -91,7 +91,7 @@ def examine_item(item_name):
                     riddle = random.choice(all_riddles)
                     print(output + "There is an old wise man there. The wise man loves riddles and, in order to get the key belonging to the " + item["name"] + ", you need to answer correctly. Otherwise you will not be able to escape. The riddle is the following: \n\n" + riddle["question"])
                     question = input("\n\nType here: ").lower().strip()
-                    if question == riddle["answer"]:
+                    if question in riddle["answer"]:
                         item_found = object_relations[item["name"]].pop()
                         game_state["keys_collected"].append(item_found)
                         print(colored("Congratulations! The wise man gives you the " + item_found["name"] + ".", 'green'))
